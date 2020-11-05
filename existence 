@@ -1,0 +1,68 @@
+#include <cstdio> 
+#include <cmath>
+
+using namespace std;
+int MAX_N; int n;
+bool cord [MAX_N][MAX_N][MAX_N]={true,};
+
+//입력
+void inp_f(){
+	//import roi
+	public bool zx[MAX_N][MAX_N];
+	public bool zy[MAX_N][MAX_N];
+
+}
+
+//존재성 증명
+bool existencne(){
+    for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+            if(!zx[i][j]){
+                for(int k=0;k<n;k++){
+                    //해당 열 제거
+                    cord[j][k][i]=false;
+                }
+            }
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+            if(!zy[i][j]){
+                for(int k=0;k<n;k++){
+                    //해당 행 제거
+                    cor[k][j][[i]]=false;
+                }
+            }
+		}
+	}
+    for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+            if(zx[i][j]){
+                //열 재확인
+                bool e=false;
+                for(int k=0;k<n;k++){
+                    e|=cord[j][k][i];
+                }
+                if(!e)return false;
+            }
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+            if(zy[i][j]){
+                //행 재확인
+                bool e=false;
+                for(int k=0;k<n;k++){
+                    e|=cor[k][j][[i]];
+                }
+                if(!e) return false;
+            }
+		}
+	}
+    return true;
+}
+
+int main(){
+    bool ans=existencne();
+    return ans;
+}

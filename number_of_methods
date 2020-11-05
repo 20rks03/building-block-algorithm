@@ -1,0 +1,76 @@
+#include <cstdio>
+#include <cmath>
+
+
+
+using namespace std;
+int MAX_N=10; int n;
+
+
+
+int com(int n,int m){
+	if(n==m||m==0) return 1;
+	return com(n-1,m-1)+com(n-1,m);
+}
+
+
+//각 층에 해당하는 경우의 수를 계산하는 함수
+int ans_f(int z){
+	int ret=0;
+	max=max(xnrr[z],ynrr[z]);
+	min=min(xnnrr[z],ynrr[z]);
+	for(int i=0;i<min;i++){
+		ret+=pow(-1,k)*com(min,i)*pow((pow(2,min-i)-1),max);
+	}
+	return ret;
+}
+
+int max_volume(){
+	int ret=0;
+	for(int i=0;i<n;i++) ret+=xnrr[i]*ynrr[i];
+	return ret;
+}
+//입력
+void inp_f(){
+	//import roi
+	public bool zx[MAX_N][MAX_N];
+	public bool zy[MAX_N][MAX_N];
+	public int xnrr[MAX_N];
+	public int ynrr[MAX_N];
+	int idx=-1;
+	for(int i=0;i<n;i++){
+		int cnt=0;
+		for(int j=0;j<n;j++){
+			if(zx[i][j]){
+				cnt++;
+			}
+		}
+		++idx;
+		xnrr[idx]=cnt;
+	}
+	idx=-1;
+	for(int i=0;i<n;i++){
+		int cnt=0;
+		for(int j=0;j<n;j++){
+			if(zy[i][j]){
+				cnt++;
+			}
+		}
+		++idx;
+		ynrr[idx]=cnt;
+	}
+}
+int main(){
+	inp();
+	if(!exist_f()){
+		return 0;
+	}
+	int ans=ans_f(0);
+	for (int i=1;i<n;i++){
+		ans*=ans_f(i);
+	}
+	int volume=max_volume();
+	printf("%d",ans);
+	printf("%d",volume):
+	return 0;
+}
